@@ -1,6 +1,7 @@
 ﻿using HotelReservation.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using HotelReservation.Authendication;
 
 namespace HotelReservation.Data
 {
@@ -19,5 +20,6 @@ namespace HotelReservation.Data
         {
             base.ConfigureConventions(configurationBuilder);
         }
+        public DbSet<HotelReservation.Authendication.Login> Login { get; set; } = default!;
     }
 }
