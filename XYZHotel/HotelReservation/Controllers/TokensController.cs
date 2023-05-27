@@ -9,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace MainProject.Controllers
+namespace HotelReservation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

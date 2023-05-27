@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using HotelReservation.Data;
 using HotelReservation.Models;
 using HotelReservation.Repository.Room;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace HotelReservation.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class RoomsController : ControllerBase

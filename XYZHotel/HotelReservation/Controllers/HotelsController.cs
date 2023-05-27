@@ -9,9 +9,11 @@ using HotelReservation.Data;
 using HotelReservation.Models;
 using HotelReservation.Repository.Hotels;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelReservation.Controllers
 {
+    [Authorize(Roles ="Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class HotelsController : ControllerBase

@@ -1,14 +1,17 @@
 ﻿using HotelReservation.Models;
 using HotelReservation.Repository.Filters;
 using HotelReservation.Repository.Hotels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Buffer = HotelReservation.Repository.Filters.Buffer;
 
 namespace HotelReservation.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private readonly ISelectHotel _context;
 

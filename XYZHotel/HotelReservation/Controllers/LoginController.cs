@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HotelReservation.Data;
 using HotelReservation.Authendication;
 
-namespace HotelApi.Controller
+namespace HotelReservation.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
