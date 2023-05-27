@@ -1,4 +1,5 @@
 using HotelReservation.Data;
+using HotelReservation.Repository.Hotels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IHotels,HotelServices>();
 builder.Services.AddDbContext<ModelDbContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "SQLConnection")));
 builder.Services.AddDbContext<LoginDbContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "Auth")));
 

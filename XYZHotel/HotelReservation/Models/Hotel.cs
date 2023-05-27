@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelReservation.Models
 {
-    public class Hotels
+    public class Hotel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,6 +13,6 @@ namespace HotelReservation.Models
 
         public string? Location { get; set; }
 
-        public ICollection<Room>? rooms { get; set; }
+        public ICollection<Room_Details>? rooms { get; set; }
     }
 }

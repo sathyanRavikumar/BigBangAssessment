@@ -13,7 +13,7 @@ namespace HotelReservation.Models
         [ForeignKey(nameof(User))]
         public int userId { get; set; }
 
-        [ForeignKey(nameof(Room))]
+        [ForeignKey(nameof(Room_Details))]
         public int RoomId { get; set; }
 
         public string? Cust_address { get; set; }

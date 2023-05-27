@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelReservation.Models
 {
-    public class Room
+    public class Room_Details
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoomId { get; set; }
 
-        [ForeignKey(nameof(Hotels))]
+        [ForeignKey(nameof(Hotel))]
         public int HotelId { get; set; }
 
         public int RoomNumber { get; set; }
