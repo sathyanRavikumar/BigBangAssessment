@@ -9,5 +9,6 @@ namespace HotelReservation.Repository.Room
         public  Task<Room_Details> GetRoom(int id);
         public  Task<List<Room_Details>> PutRoom(int id, Room_Details room);
         public Task<List<Room_Details>> PostRoom(Room_Details room);
+        public Task<List<Room_Details>> DeleteRoom(int id);
       }
 }

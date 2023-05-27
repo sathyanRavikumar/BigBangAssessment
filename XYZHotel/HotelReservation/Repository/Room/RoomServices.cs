@@ -40,5 +40,26 @@ namespace HotelReservation.Repository.Room
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.rooms.ToListAsync();
         }
+        public async Task<List<Room_Details>> PostRoom(Room_Details room)
+        {
+            var roo = await _dbcontext.rooms.AddAsync(room);
+            if (roo == null)
+            {
+                throw new ArithmeticException("No Data Posted");
+            }
+            await _dbcontext.SaveChangesAsync();
+            return await _dbcontext.rooms.ToListAsync();
+        }
+        public async Task<List<Room_Details>> DeleteRoom(int id)
+        {
+            var obj = await _dbcontext.rooms.FindAsync(id);
+            _dbcontext.rooms.Remove(obj);
+            if (obj == null)
+            {
+                throw new ArithmeticException("No Data has been deleted");
+            }
+            await _dbcontext.SaveChangesAsync();
+            return await _dbcontext.rooms.ToListAsync();
+        }
     }
 }

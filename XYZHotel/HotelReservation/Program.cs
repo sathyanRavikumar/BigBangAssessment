@@ -1,5 +1,7 @@
 using HotelReservation.Data;
+using HotelReservation.Repository.Filters;
 using HotelReservation.Repository.Hotels;
+using HotelReservation.Repository.Room;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,6 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IHotels,HotelServices>();
+builder.Services.AddScoped<IRoom,RoomServices>();
+builder.Services.AddScoped<ISelectHotel, SelectHotel>();
 builder.Services.AddDbContext<ModelDbContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "SQLConnection")));
 builder.Services.AddDbContext<LoginDbContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "Auth")));
 

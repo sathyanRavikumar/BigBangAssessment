@@ -71,41 +71,32 @@ namespace HotelReservation.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Room_Details>> PostRoom(Room_Details room)
+        public async Task<ActionResult<List<Room_Details>>> PostRoom(Room_Details room)
         {
-          if (_context.rooms == null)
-          {
-              return Problem("Entity set 'ModelDbContext.rooms'  is null.");
-          }
-            _context.rooms.Add(room);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetRoom", new { id = room.RoomId }, room);
+            try
+            {
+                return Ok(await _context.PostRoom(room));
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoom(int id)
+        public async Task<ActionResult<List<Room_Details>>> DeleteRoom(int id)
         {
-            if (_context.rooms == null)
+            try
             {
-                return NotFound();
+                return Ok(await _context.DeleteRoom(id));
             }
-            var room = await _context.rooms.FindAsync(id);
-            if (room == null)
+            catch (ArithmeticException ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-
-            _context.rooms.Remove(room);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
-        private bool RoomExists(int id)
-        {
-            return (_context.rooms?.Any(e => e.RoomId == id)).GetValueOrDefault();
-        }
+        
     }
 }
